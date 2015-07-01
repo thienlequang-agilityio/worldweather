@@ -53,7 +53,7 @@ class MasterViewController: UITableViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showDetail" {
       if let indexPath = self.tableView.indexPathForSelectedRow() {
-        let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
+        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
         controller.cityWeather = weatherData.cities[indexPath.row]
         controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
       }
@@ -70,7 +70,7 @@ class MasterViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("CityCell", forIndexPath: indexPath) as UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("CityCell", forIndexPath: indexPath) as! UITableViewCell
     
     let city = weatherData.cities[indexPath.row]
     cell.textLabel?.text = city.name

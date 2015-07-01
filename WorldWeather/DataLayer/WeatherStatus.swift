@@ -28,7 +28,7 @@ enum WeatherStatusType: String {
   case Cloud = "cloud"
   case Lightning = "lightning"
   var image: UIImage {
-    return UIImage(named: self.toRaw())
+    return UIImage(named: self.rawValue)!
   }
 }
 
