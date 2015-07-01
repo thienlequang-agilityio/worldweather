@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -43,24 +44,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CityCell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CityCell" rowHeight="121" id="WCw-Qf-5nD" customClass="CityTableViewCell" customModule="WorldWeather" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bangkok" translatesAutoresizingMaskIntoConstraints="NO" id="VqT-Z4-8Y7">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hlv-pM-Wbs">
+                                            <rect key="frame" x="48" y="48" width="544" height="24"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
+                                            <color key="textColor" red="0.21568627450980393" green="0.50196078431372548" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="VqT-Z4-8Y7" secondAttribute="trailing" id="6WG-f2-G6R"/>
+                                        <constraint firstItem="VqT-Z4-8Y7" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="top" id="7bD-4T-q9r"/>
+                                        <constraint firstAttribute="bottom" secondItem="VqT-Z4-8Y7" secondAttribute="bottom" id="9ZD-Lz-JSn"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Hlv-pM-Wbs" secondAttribute="bottom" constant="40" id="CQn-xs-Njm"/>
+                                        <constraint firstItem="Hlv-pM-Wbs" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" constant="40" id="HNU-Tb-2Fn"/>
+                                        <constraint firstItem="VqT-Z4-8Y7" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leading" id="cJL-8w-jt3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Hlv-pM-Wbs" secondAttribute="trailing" id="pV1-ma-b2P"/>
+                                        <constraint firstItem="Hlv-pM-Wbs" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" constant="40" id="x7z-vD-vjb"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="cityImageView" destination="VqT-Z4-8Y7" id="6Iy-0H-4HN"/>
+                                    <outlet property="cityNameLabel" destination="Hlv-pM-Wbs" id="YYa-Jp-tkZ"/>
                                     <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>
                                 </connections>
                             </tableViewCell>
@@ -251,8 +267,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="152" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" image="cloud" translatesAutoresizingMaskIntoConstraints="NO" id="Fh8-h0-o2M" userLabel="Weather Icon">
-                                            <rect key="frame" x="4" y="34" width="144" height="96"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cloud" translatesAutoresizingMaskIntoConstraints="NO" id="Fh8-h0-o2M" userLabel="Weather Icon">
+                                            <rect key="frame" x="4" y="35" width="144" height="95"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smT-1e-EvJ" userLabel="Day Name">
                                             <rect key="frame" x="0.0" y="0.0" width="152" height="35"/>
@@ -303,6 +319,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Bangkok" width="599" height="200"/>
         <image name="cloud" width="300" height="197"/>
     </resources>
     <inferredMetricsTieBreakers>
